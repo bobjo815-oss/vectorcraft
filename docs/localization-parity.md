@@ -120,3 +120,10 @@ native review is welcome.
 The Korean catalog also covers all 45 default swatch and swatch-group names
 reported by the localization audit. These contextual display names do not rename
 user-created swatches or change the underlying document data.
+
+The November 2026 Korean update adds 1,219 AI-assisted translations for status
+and error messages, including import, export, printing and invalid parameters.
+The audit preserves literal braces in JSON examples and distinguishes them
+from placeholders. Localized messages are for display. Command identifiers
+and the English messages returned by the engine and automation protocol are
+unchanged.

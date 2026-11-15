@@ -1336,6 +1336,25 @@ fn package_status_message_templates_parse() {
     assert!(Catalog::parse("@msg\tPackaged {n} file(s) in {folder}{note}\tbad\n").message("Packaged 1 file(s) in /a b").is_none());
 }
 
+#[test]
+fn korean_diagnostics_translate_literal_braces_and_interpolate_values() {
+    let ko = ko();
+    let cases = [
+        ("not an RTF file: it doesn't start with {\\rtf", "RTF 파일이 아닙니다. {\\rtf로 시작해야 합니다"),
+        ("expected {\"objects\": [...]}", "{\"objects\": [...]} 형식이어야 합니다"),
+        (
+            "`sample` is an exporter: export with document.export {\"format\": \"plugin.sample\"}",
+            "`sample`은(는) 내보내기 도구입니다. document.export {\"format\": \"plugin.sample\"}으로 내보내세요",
+        ),
+        ("PDF options: CSV is empty", "PDF 옵션: CSV가 비어 있습니다"),
+        ("bleed must be 0–10 pt (got 50)", "bleed은(는) 0~10 pt이어야 합니다. 입력값: 50"),
+    ];
+    for (source, expected) in cases {
+        assert_eq!(message(ko, source), expected);
+        assert_eq!(message(Lang::EN, source), source);
+    }
+}
+
 /// The scan reads the message of an error made with one of the engine's [`ERROR_HELPERS`] or with
 /// an error enum's variant: a literal or a `format!` string, on the call's line or wrapped over
 /// several lines, in the same template form as the catalogs' rows. It does not read a call whose
@@ -1580,11 +1599,13 @@ fn source_messages(code: &str, helpers: &[(&str, usize)]) -> Vec<String> {
     let mut out = vec![];
     for rest in after_markers.chain(in_variants).chain(in_helpers) {
         let rest = rest.trim_start();
-        let rest = rest.strip_prefix("format!(").map_or(rest, str::trim_start);
+        let format = rest.strip_prefix("format!(");
+        let thiserror = code[..code.len() - rest.len()].trim_end().ends_with("#[error(");
+        let rest = format.map_or(rest, str::trim_start);
         let Some(lit) = rest.strip_prefix('"').and_then(string_literal) else { continue };
         let has_word = lit.as_bytes().windows(3).any(|w| w.iter().all(u8::is_ascii_lowercase));
         if has_word && !NOT_MESSAGES.contains(&lit.as_str()) {
-            out.push(as_template(&lit));
+            out.push(if format.is_some() || thiserror { as_template(&lit) } else { lit });
         }
     }
     out
@@ -1658,10 +1679,25 @@ fn as_template(s: &str) -> String {
     let mut out = String::new();
     let mut unnamed = 0;
     let mut rest = s;
-    while let Some(a) = rest.find('{') {
+    while let Some(a) = rest.find(['{', '}']) {
         out.push_str(&rest[..a]);
+        let brace = rest.as_bytes()[a] as char;
         let after = &rest[a + 1..];
-        let Some(b) = after.find('}') else { break };
+        if let Some(tail) = after.strip_prefix(brace) {
+            out.push(brace);
+            rest = tail;
+            continue;
+        }
+        if brace == '}' {
+            out.push(brace);
+            rest = after;
+            continue;
+        }
+        let Some(b) = after.find('}') else {
+            out.push('{');
+            rest = after;
+            break;
+        };
         let name = after[..b].split(':').next().unwrap_or("");
         if name.is_empty() {
             unnamed += 1;

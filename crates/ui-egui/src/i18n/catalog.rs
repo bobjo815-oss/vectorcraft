@@ -41,25 +41,32 @@ const MAX_MESSAGE_LEN: usize = 2000;
 impl Template {
     /// `None` for a template that can't be matched reliably: no literal text, or two placeholders
     /// in a row (where one ends and the next begins is unknowable).
-    fn parse(source: &str, translation: String) -> Option<Template> {
+    fn parse(source: &str, translation: &str) -> Option<Template> {
         let mut pieces = Vec::new();
-        let mut rest = source;
-        while let Some(a) = rest.find('{') {
-            let after = rest.get(a + 1..)?;
-            let b = after.find('}')?;
-            if a > 0 {
-                pieces.push(Piece::Text(rest.get(..a)?.to_string()));
+        let mut end = 0;
+        for (start, _) in source.match_indices('{') {
+            let after = &source[start + 1..];
+            let Some((name, _)) = after.split_once('}') else { break };
+            // JSON samples, schema notation and format signatures contain literal braces.
+            if name.is_empty() || !name.bytes().all(|b| b.is_ascii_alphanumeric() || b == b'_') {
+                continue;
+            }
+            if start > end {
+                pieces.push(Piece::Text(source[end..start].to_string()));
             } else if matches!(pieces.last(), Some(Piece::Hole(_))) {
                 return None;
             }
-            pieces.push(Piece::Hole(after.get(..b)?.to_string()));
-            rest = after.get(b + 1..)?;
+            pieces.push(Piece::Hole(name.to_string()));
+            end = start + name.len() + 2;
         }
-        if !rest.is_empty() {
-            pieces.push(Piece::Text(rest.to_string()));
+        if end == 0 {
+            return None;
+        }
+        if end < source.len() {
+            pieces.push(Piece::Text(source[end..].to_string()));
         }
         let literal = pieces.iter().map(|p| if let Piece::Text(t) = p { t.len() } else { 0 }).sum();
-        (literal > 0).then_some(Template { pieces, literal, translation })
+        (literal > 0).then(|| Template { pieces, literal, translation: translation.to_owned() })
     }
 
     /// The placeholder values if `s` is an instance of this template.
@@ -161,8 +168,8 @@ impl Catalog {
                     c.plurals.insert(src, tr.split('|').map(str::to_string).collect());
                 }
                 "@msg" => {
-                    if src.contains('{') {
-                        c.templates.extend(Template::parse(&src, tr));
+                    if let Some(template) = Template::parse(&src, &tr) {
+                        c.templates.push(template);
                     } else {
                         c.messages.insert(src, tr);
                     }

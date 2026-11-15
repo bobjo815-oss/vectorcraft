@@ -421,7 +421,13 @@ impl Default for SecuritySettings {
 
 /// `v` lies in `lo..=hi` (and is a number).
 pub(crate) fn within(name: &str, v: f64, lo: f64, hi: f64, unit: &str) -> Result<(), PdfError> {
-    if (lo..=hi).contains(&v) { Ok(()) } else { Err(PdfError::BadSetting(format!("{name} must be {lo}–{hi}{unit} (got {v})"))) }
+    if (lo..=hi).contains(&v) {
+        Ok(())
+    } else {
+        // Keep the upper bound and unit together so a message catalog can match them as one value.
+        let upper = format!("{hi}{unit}");
+        Err(PdfError::BadSetting(format!("{name} must be {lo}–{upper} (got {v})")))
+    }
 }
 
 impl PdfSettings {
