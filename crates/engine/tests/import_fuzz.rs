@@ -3875,18 +3875,48 @@ fn dxf_blocks_inserting_themselves_are_left_out() {
 #[test]
 fn deeply_nested_affinity_groups_are_read_within_the_cap() {
     use vectorcraft_affinity::synth::{self, F, Method, tag};
+    fn nested(levels: u32) -> Vec<u8> {
+        use vectorcraft_affinity::synth::{self, tag};
+        fn definition(bytes: &mut Vec<u8>, id: u32, class: &[u8; 4]) {
+            bytes.push(1);
+            bytes.extend(id.to_le_bytes());
+            bytes.push(1);
+            bytes.extend(tag(class).0.to_le_bytes());
+        }
+        fn child(bytes: &mut Vec<u8>) {
+            bytes.push(0xb1);
+            bytes.extend(tag(b"Chld").0.to_le_bytes());
+            bytes.extend(1u32.to_le_bytes());
+        }
+        // Avoid recursively serializing and dropping a 2000-level fixture tree
+        // before the reader under test is even called on its small stack.
+        let mut bytes = synth::stream(&[]);
+        bytes.pop();
+        bytes.push(0x31);
+        bytes.extend(tag(b"DocR").0.to_le_bytes());
+        definition(&mut bytes, 1, b"DocN");
+        child(&mut bytes);
+        definition(&mut bytes, 2, b"Sprd");
+        for id in (11..11 + levels).rev() {
+            child(&mut bytes);
+            definition(&mut bytes, id, b"Grup");
+        }
+        child(&mut bytes);
+        definition(&mut bytes, 10, b"Grup");
+        bytes.resize(bytes.len() + levels as usize + 4, 0);
+        bytes
+    }
+    // Keep the iterative fixture byte-for-byte equivalent to the ordinary builder.
+    for levels in 0..4 {
+        let group = |id: u32, fields| F::Def(id, vec![tag(b"Grup")], fields);
+        let inner = (0..levels).fold(group(10, vec![]), |inner, i| group(11 + i, vec![(tag(b"Chld"), F::Shared(vec![inner]))]));
+        let spread = F::Def(2, vec![tag(b"Sprd")], vec![(tag(b"Chld"), F::Shared(vec![inner]))]);
+        let stream = synth::stream(&[(tag(b"DocR"), F::Def(1, vec![tag(b"DocN")], vec![(tag(b"Chld"), F::Shared(vec![spread]))]))]);
+        assert_eq!(nested(levels), stream);
+    }
     // Groups in groups: within what the reader takes, past its cap on layers (128), past its cap
     // on the stream's own nesting (384), and far past both.
-    let files: Vec<Vec<u8>> = [20u32, 120, 180, 370, 2000]
-        .into_iter()
-        .map(|levels| {
-            let group = |id: u32, fields| F::Def(id, vec![tag(b"Grup")], fields);
-            let inner = (0..levels).fold(group(10, vec![]), |inner, i| group(11 + i, vec![(tag(b"Chld"), F::Shared(vec![inner]))]));
-            let spread = F::Def(2, vec![tag(b"Sprd")], vec![(tag(b"Chld"), F::Shared(vec![inner]))]);
-            let stream = synth::stream(&[(tag(b"DocR"), F::Def(1, vec![tag(b"DocN")], vec![(tag(b"Chld"), F::Shared(vec![spread]))]))]);
-            affinity_native(&stream, Method::Stored)
-        })
-        .collect();
+    let files: Vec<Vec<u8>> = [20u32, 120, 180, 370, 2000].into_iter().map(|levels| affinity_native(&nested(levels), Method::Stored)).collect();
     on_a_small_stack(move || {
         for bytes in &files {
             open_deep("deep.afdesign", bytes);

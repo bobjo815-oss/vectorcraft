@@ -344,6 +344,8 @@ Tests that use a corpus skip cleanly when it is absent.
 /// The interface shows them in English, so a gap never fails it; only a scan that finds nothing does.
 fn cmd_i18n_report() -> Result<(), String> {
     let mut c = cargo();
-    c.args(["test", "-p", "vectorcraft-ui-egui", "--lib", "--", "i18n::tests::untranslated_report", "--exact", "--nocapture"]);
-    run(c, "cargo test -p vectorcraft-ui-egui --lib -- i18n::tests::untranslated_report --exact --nocapture")
+    // Match CI's workspace feature resolution so this report reuses its test artifacts.
+    // Selecting only ui-egui can rebuild its dependency graph with different features.
+    c.args(["test", "--workspace", "--lib", "--bins", "--tests", "--", "i18n::tests::untranslated_report", "--exact", "--nocapture"]);
+    run(c, "cargo test --workspace --lib --bins --tests -- i18n::tests::untranslated_report --exact --nocapture")
 }

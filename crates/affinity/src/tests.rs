@@ -314,8 +314,26 @@ mod archive {
 
     #[test]
     fn hostile_streams_fail_cleanly() {
-        let deep = (0..2000).fold(Vec::new(), |inner, _| vec![(tag(b"Chld"), F::Obj(tag(b"Grup"), inner))]);
-        assert_eq!(stream::parse(&synth::stream(&deep)).unwrap_err(), Error::Limit("objects nested too deeply"));
+        // Construct the hostile bytes without recursively serializing or dropping
+        // a 2000-level Rust fixture tree on the test thread's small Windows stack.
+        let nested = |depth: usize| {
+            let mut bytes = synth::stream(&[]);
+            bytes.pop(); // Root fields' terminator follows the nested objects.
+            for _ in 0..depth {
+                bytes.push(0x32);
+                bytes.extend(tag(b"Chld").0.to_le_bytes());
+                bytes.push(1);
+                bytes.extend(tag(b"Grup").0.to_le_bytes());
+                bytes.extend(0u16.to_le_bytes());
+            }
+            bytes.resize(bytes.len() + depth + 1, 0);
+            bytes
+        };
+        for depth in 0..5 {
+            let tree = (0..depth).fold(Vec::new(), |inner, _| vec![(tag(b"Chld"), F::Obj(tag(b"Grup"), inner))]);
+            assert_eq!(nested(depth), synth::stream(&tree));
+        }
+        assert_eq!(stream::parse(&nested(2000)).unwrap_err(), Error::Limit("objects nested too deeply"));
         // An array claiming four billion elements in a few bytes.
         let huge = synth::stream(&[(tag(b"Big_"), F::Raw(vec![0x81, b'_', b'g', b'i', b'B', 0xff, 0xff, 0xff, 0xff, 0]))]);
         assert_eq!(stream::parse(&huge).unwrap_err(), Error::Malformed("array longer than its data"));
@@ -328,6 +346,57 @@ mod archive {
         let d = doc();
         for end in 0..d.len() {
             assert!(stream::parse(&d[..end]).is_err(), "{end}");
+        }
+    }
+
+    #[test]
+    fn nested_object_paths_reach_the_depth_guard() {
+        let nested = |code: u8, depth: usize| {
+            let mut bytes = synth::stream(&[]);
+            bytes.pop();
+            for level in 0..depth {
+                bytes.push(code);
+                if code & 0x7f != 0x30 || level == 0 {
+                    bytes.extend(tag(b"Chld").0.to_le_bytes());
+                }
+                if code & 0x80 != 0 {
+                    bytes.extend(1u32.to_le_bytes());
+                }
+                match code {
+                    0x31 | 0xb1 => {
+                        bytes.push(1);
+                        bytes.extend((level as u32).to_le_bytes());
+                        bytes.push(1);
+                        bytes.extend(tag(b"Grup").0.to_le_bytes());
+                    }
+                    0x32 => {
+                        bytes.push(1);
+                        bytes.extend(tag(b"Grup").0.to_le_bytes());
+                        bytes.extend(0u16.to_le_bytes());
+                    }
+                    0xb2 => {
+                        bytes.extend(tag(b"Grup").0.to_le_bytes());
+                        bytes.extend(0u16.to_le_bytes());
+                        bytes.push(1);
+                    }
+                    _ => assert!(matches!(code, 0x30 | 0xb0)),
+                }
+            }
+            bytes.resize(bytes.len() + depth + 1, 0);
+            bytes
+        };
+        for code in [0x30, 0x31, 0x32, 0xb0, 0xb1, 0xb2] {
+            let accepted = nested(code, stream::MAX_DEPTH - 1);
+            let rejected = nested(code, 2000);
+            std::thread::Builder::new()
+                .stack_size(1024 * 1024)
+                .spawn(move || {
+                    assert_eq!(stream::parse(&accepted).unwrap().objects.len(), stream::MAX_DEPTH, "{code:x}");
+                    assert_eq!(stream::parse(&rejected).unwrap_err(), Error::Limit("objects nested too deeply"));
+                })
+                .unwrap()
+                .join()
+                .unwrap();
         }
     }
 

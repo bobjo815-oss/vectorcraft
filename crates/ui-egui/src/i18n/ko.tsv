@@ -25,8 +25,8 @@ font-technology	Variable	가변
 	Character Alignment	문자 정렬
 	Connect Selected End Points	선택한 끝점 연결
 	Connect	연결
-	Convert Selected Anchor Points to Corner	선택한 앵커 포인트를 모퉁이로 변환
-	Convert Selected Anchor Points to Smooth	선택한 앵커 포인트를 부드러운 곡선으로 변환
+	Convert Selected Anchor Points to Corner	선택한 고정점을 모퉁이로 변환
+	Convert Selected Anchor Points to Smooth	선택한 고정점을 부드러운 곡선으로 변환
 	Convert:	변환:
 	Cut Path	패스 자르기
 	Decorative	장식체
@@ -124,7 +124,7 @@ font-technology	Variable	가변
 	Paste in Front	앞에 붙여넣기
 	Paste in Back	뒤에 붙여넣기
 	Paste in Place	제자리에 붙여넣기
-	Paste on All Artboards	모든 아트보드에 붙여넣기
+	Paste on All Artboards	모든 대지에 붙여넣기
 	Paste without Formatting	서식 없이 붙여넣기
 	Clear	지우기
 	Find and Replace…	찾기 및 바꾸기…
@@ -215,7 +215,7 @@ font-technology	Variable	가변
 	Divide Slices…	분할 나누기…
 	Delete All	모두 삭제
 	Slice Options…	분할 옵션…
-	Clip to Artboard	아트보드로 자르기
+	Clip to Artboard	대지로 자르기
 	Path	패스
 	Join	결합
 	Average…	평균…
@@ -224,8 +224,8 @@ font-technology	Variable	가변
 	Offset Path…	패스 오프셋…
 	Reverse Path Direction	패스 방향 반전
 	Simplify…	단순화…
-	Add Anchor Points	앵커 포인트 추가
-	Remove Anchor Points	앵커 포인트 제거
+	Add Anchor Points	고정점 추가
+	Remove Anchor Points	고정점 제거
 	Divide Objects Below	아래 개체 나누기
 	Split Into Grid…	격자로 나누기…
 	Clean Up…	정리…
@@ -282,9 +282,9 @@ font-technology	Variable	가변
 	Clipping Mask	클리핑 마스크
 	Edit Clipping Path	클리핑 패스 편집
 	Compound Path	컴파운드 패스
-	Artboards	아트보드
-	Convert to Artboards	아트보드로 변환
-	Rearrange All Artboards…	모든 아트보드 재정렬…
+	Artboards	대지
+	Convert to Artboards	대지로 변환
+	Rearrange All Artboards…	모든 대지 재정렬…
 	Fit to Artwork Bounds	아트워크 경계에 맞추기
 	Fit to Selected Art	선택한 아트에 맞추기
 	Graph	그래프
@@ -386,7 +386,7 @@ font-technology	Variable	가변
 	Vertical	세로
 	Select	선택
 	All	모두
-	All on Active Artboard	활성 아트보드의 모두
+	All on Active Artboard	활성 대지의 모두
 	Deselect	선택 해제
 	Reselect	다시 선택
 	Inverse	반전
@@ -521,14 +521,14 @@ font-technology	Variable	가변
 	Proof Colors	교정 색상
 	Zoom In	확대
 	Zoom Out	축소
-	Fit Artboard in Window	창에 아트보드 맞추기
+	Fit Artboard in Window	창에 대지 맞추기
 	Fit All in Window	창에 모두 맞추기
 	Actual Size	실제 크기
 	Rotate View	보기 회전
 	Reset Rotate View	회전 보기 재설정
 	Rotate View to Selection	선택 영역에 맞춰 보기 회전
 	Hide Edges	가장자리 숨기기
-	Hide Artboards	아트보드 숨기기
+	Hide Artboards	대지 숨기기
 	Show Print Tiling	인쇄 타일 표시
 	Hide Slices	분할 영역 숨기기
 	Lock Slices	분할 영역 잠그기
@@ -537,7 +537,7 @@ font-technology	Variable	가변
 	Rulers	눈금자
 	Show Rulers	눈금자 표시
 	Change to Global Rulers	전체 눈금자로 변경
-	Change to Artboard Rulers	아트보드 눈금자로 변경
+	Change to Artboard Rulers	대지 눈금자로 변경
 	Show Video Rulers	비디오 눈금자 표시
 	Hide Bounding Box	경계 상자 숨기기
 	Show Transparency Grid	투명도 격자 표시
@@ -719,7 +719,7 @@ font-technology	Variable	가변
 	Show Text Threads	문자 스레드 표시
 	Hide Hidden Characters	숨겨진 문자 숨기기
 	Show Gradient Annotator	그레이디언트 주석 도구 표시
-	Show Artboards	아트보드 표시
+	Show Artboards	대지 표시
 	Hide Rulers	눈금자 숨기기
 	Show Bounding Box	경계 상자 표시
 	Hide Transparency Grid	투명도 격자 숨기기
@@ -760,7 +760,7 @@ font-technology	Variable	가변
 	 keeps its proportions)	 비율 유지)
 	 near a selected pin to rotate  |  	 선택한 핀 근처에서 회전  |  
 	 on the canvas to create one (	 캔버스에서 만들기 (
-	 selects several, or draws one inside an artboard)	 여러 개 선택 또는 아트보드 안에 만들기)
+	 selects several, or draws one inside an artboard)	 여러 개 선택 또는 대지 안에 만들기)
 	 over paths to roughen their outlines  |  	 패스 위에서 윤곽선 거칠게 만들기  |  
 	 over paths, and hold still to keep going  |  	 패스 위에서 멈춰 있으면 계속 진행  |  
 	 the art to add a pin  |  	 아트워크를 클릭하여 핀 추가  |  
@@ -808,7 +808,7 @@ font-technology	Variable	가변
 	(closest)	(가장 가까운 항목)
 	+ Add Scale	+ 눈금 추가
 	0.2 (quality) to 100 (speed)	0.2(품질) ~ 100(속도)
-	1 {unit} on the artboard stands for {real} {unit} in the scene.	아트보드의 1 {unit}은(는) 장면의 {real} {unit}에 해당합니다.
+	1 {unit} on the artboard stands for {real} {unit} in the scene.	대지의 1 {unit}은(는) 장면의 {real} {unit}에 해당합니다.
 	30° Angles	30° 각도
 	45° Angles	45° 각도
 	60° Angles	60° 각도
@@ -827,8 +827,8 @@ font-technology	Variable	가변
 	Activate Document	문서 활성화
 	Active Perspective Plane	활성 원근 평면
 	Add Anchor (Pen)	앵커 추가(펜)
-	Add Anchor Point	앵커 포인트 추가
-	Add Anchor Point Tool	앵커 포인트 추가 도구
+	Add Anchor Point	고정점 추가
+	Add Anchor Point Tool	고정점 추가 도구
 	Add Effect	효과 추가
 	Add Freeform Line	자유형 선 추가
 	Add Freeform Point	자유형 점 추가
@@ -861,7 +861,7 @@ font-technology	Variable	가변
 	Align Stroke to Outside	선을 바깥쪽에 정렬
 	Align Stroke:	선 정렬:
 	Align To:	정렬 대상:
-	Align to Artboard	아트보드에 정렬
+	Align to Artboard	대지에 정렬
 	Align to Glyph Bounds	글리프 경계에 정렬
 	Align to Key Object	키 개체에 정렬
 	Align to Page	페이지에 정렬
@@ -878,10 +878,10 @@ font-technology	Variable	가변
 	Alt:	Alt:
 	Alter Paths for Appearance	모양에 맞게 패스 변경
 	Amount:	양:
-	Anchor Point	앵커 포인트
-	Anchor Point Tool	앵커 포인트 도구
-	Anchor Points	앵커 포인트
-	Anchor Points, Handle, and Bounding Box Display	앵커 포인트, 핸들, 경계 상자 표시
+	Anchor Point	고정점
+	Anchor Point Tool	고정점 도구
+	Anchor Points	고정점
+	Anchor Points, Handle, and Bounding Box Display	고정점, 핸들, 경계 상자 표시
 	Anchor/Path Labels	앵커/패스 레이블
 	Angle	각도
 	Angle:	각도:
@@ -917,11 +917,11 @@ font-technology	Variable	가변
 	Arrowheads:	화살촉:
 	Art using a deleted global swatch keeps its colour.	삭제된 글로벌 견본을 사용한 아트워크는 색상을 유지합니다.
 	ArtCraft website	ArtCraft 웹사이트
-	Artboard Options	아트보드 옵션
-	Artboard Options…	아트보드 옵션…
-	Artboard Tool	아트보드 도구
-	Artboard {number}	아트보드 {number}
-	Artboard:	아트보드:
+	Artboard Options	대지 옵션
+	Artboard Options…	대지 옵션…
+	Artboard Tool	대지 도구
+	Artboard {number}	대지 {number}
+	Artboard:	대지:
 	Artwork Colors	아트워크 색상
 	Ask When Modified	수정 시 확인
 	Aspect Ratio	가로세로 비율
@@ -935,7 +935,7 @@ font-technology	Variable	가변
 	Auto Size New Area Type	새 영역 문자 크기 자동 조정
 	Auto-Collapse Iconic Panels	아이콘 패널 자동 접기
 	Show Tool Group Labels	도구 그룹 레이블 표시
-	Auto-Rotate (turn the paper to each artboard)	자동 회전(용지를 각 아트보드에 맞춰 회전)
+	Auto-Rotate (turn the paper to each artboard)	자동 회전(용지를 각 대지에 맞춰 회전)
 	Automatic flatness	자동 평탄도
 	Automatically	자동으로
 	Automatically Save Recovery Data	복구 데이터 자동 저장
@@ -1066,7 +1066,7 @@ font-technology	Variable	가변
 	Clear Appearance	모양새 지우기
 	Clear Overrides	오버라이드 지우기
 	Click	클릭
-	Click an anchor point	앵커 포인트 클릭
+	Click an anchor point	고정점 클릭
 	Click or drag	클릭 또는 드래그
 	Click the art with the Gradient tool to add or select points.	그레이디언트 도구로 아트워크를 클릭하여 점을 추가하거나 선택합니다.
 	Click the first point	첫 번째 점 클릭
@@ -1142,8 +1142,8 @@ font-technology	Variable	가변
 	Convert All Spot Colors to Process	모든 별색을 프로세스 색상으로 변환
 	Convert All Strokes to Outlines	모든 선을 윤곽선으로 변환
 	Convert All Text to Outlines	모든 문자를 윤곽선으로 변환
-	Convert Anchor Point	앵커 포인트 변환
-	Convert Anchor Points	앵커 포인트 변환
+	Convert Anchor Point	고정점 변환
+	Convert Anchor Points	고정점 변환
 	Convert Color	색상 변환
 	Convert Document Color Mode	문서 색상 모드 변환
 	Convert Process to Global	프로세스 색상을 글로벌로 변환
@@ -1195,7 +1195,7 @@ font-technology	Variable	가변
 	Curvature	곡률
 	Curvature Tool	곡률 도구
 	Custom	사용자 지정
-	Cut Path at Selected Anchor Points	선택한 앵커 포인트에서 패스 자르기
+	Cut Path at Selected Anchor Points	선택한 고정점에서 패스 자르기
 	Dim Images to:	이미지 흐리게:
 	Duplicate Selection	선택 항목 복제
 	DXF Import Options	DXF 가져오기 옵션
@@ -1215,13 +1215,13 @@ font-technology	Variable	가변
 	Define Perspective Grid	원근 격자 정의
 	Define Perspective Grid…	원근 격자 정의…
 	Delete	삭제
-	Delete Anchor Point	앵커 포인트 삭제
-	Delete Anchor Point Tool	앵커 포인트 삭제 도구
-	Delete Artboard	아트보드 삭제
-	Delete Artboards	아트보드 삭제
+	Delete Anchor Point	고정점 삭제
+	Delete Anchor Point Tool	고정점 삭제 도구
+	Delete Artboard	대지 삭제
+	Delete Artboards	대지 삭제
 	Delete Brush	브러시 삭제
 	Delete Character Style	문자 스타일 삭제
-	Delete Empty Artboards	빈 아트보드 삭제
+	Delete Empty Artboards	빈 대지 삭제
 	Delete Freeform Point	자유 형태 포인트 삭제
 	Delete Graphic Style	그래픽 스타일 삭제
 	Delete Graphic Style (Alt-click: without asking)	그래픽 스타일 삭제 (Alt-클릭: 확인 없이)
@@ -1327,10 +1327,10 @@ font-technology	Variable	가변
 	Draw:	그리기:
 	Drawing Mode	그리기 모드
 	Duplicate	복제
-	Duplicate Artboard	아트보드 복제
-	Copy Artboard	아트보드 복사
-	Cut Artboard	아트보드 잘라내기
-	Duplicate Artboards	아트보드 복제
+	Duplicate Artboard	대지 복제
+	Copy Artboard	대지 복사
+	Cut Artboard	대지 잘라내기
+	Duplicate Artboards	대지 복제
 	Duplicate Brush	브러시 복제
 	Duplicate Character Style	문자 스타일 복제
 	Duplicate Effect	효과 복제
@@ -1347,7 +1347,7 @@ font-technology	Variable	가변
 	EPS Options Dialog	EPS 옵션 대화상자
 	Each page prints as one image, at the document's raster effects resolution.	각 페이지는 문서의 래스터 효과 해상도로 하나의 이미지로 인쇄됩니다.
 	East Asian Type	동아시아 문자
-	Edit Artboards	아트보드 편집
+	Edit Artboards	대지 편집
 	Edit Color Group	색상 그룹 편집
 	Edit Freeform Point	자유 형태 포인트 편집
 	Edit Gradient	그레이디언트 편집
@@ -1424,7 +1424,7 @@ font-technology	Variable	가변
 	Expand applies to compound shapes (Alt-click a shape mode) — on the roadmap	확장은 컴파운드 모양(모양 모드를 Alt-클릭)에 적용됩니다 — 개발 예정
 	Expand:	확장:
 	Export All…	모두 내보내기…
-	Export Artboard	아트보드 내보내기
+	Export Artboard	대지 내보내기
 	A File per Object	오브젝트마다 파일 1개
 	Example: {name}	예: {name}
 	Export Preset:	내보내기 사전 설정:
@@ -1579,11 +1579,11 @@ font-technology	Variable	가변
 	Global Brush Dimensions	전역 브러시 치수
 	Global Process Color	전역 프로세스 색상
 	Go To Link	링크로 이동
-	Go to Artboard	아트보드로 이동
-	First Artboard	첫 아트보드
-	Previous Artboard	이전 아트보드
-	Next Artboard	다음 아트보드
-	Last Artboard	마지막 아트보드
+	Go to Artboard	대지로 이동
+	First Artboard	첫 대지
+	Previous Artboard	이전 대지
+	Next Artboard	다음 대지
+	Last Artboard	마지막 대지
 	Gradient Fill: click to apply, drag onto art	그레이디언트 칠: 클릭하여 적용, 아트웍에 끌어 놓기
 	Gradient Mesh	그레이디언트 메시
 	Gradient Tool	그레이디언트 도구
@@ -1695,7 +1695,7 @@ font-technology	Variable	가변
 	Place from Library	라이브러리에서 가져오기
 	Pucker	오므리기
 	Radial Repeat	방사형 반복
-	Rearrange Artboards	아트보드 재정렬
+	Rearrange Artboards	대지 재정렬
 	Release Blend	블렌드 해제
 	Release Envelope	엔벨로프 해제
 	Release Image Trace	이미지 추적 해제
@@ -1715,9 +1715,9 @@ font-technology	Variable	가변
 	Rename Style	스타일 이름 바꾸기
 	Rename View	보기 이름 바꾸기
 	Reorder Appearance	모양새 순서 변경
-	Reorder Artboards	아트보드 순서 변경
+	Reorder Artboards	대지 순서 변경
 	Reshape Spine	스파인 모양 변경
-	Resize Artboard	아트보드 크기 조절
+	Resize Artboard	대지 크기 조절
 	Resize Slice	분할 크기 조절
 	Resize Type Area	문자 영역 크기 조절
 	Scale in Perspective	원근 크기 조절
@@ -1760,7 +1760,7 @@ font-technology	Variable	가변
 	ICC Profile	ICC 프로파일
 	Identify Objects By	개체 식별 기준
 	Ignore	무시
-	Ignore Artboards (all the art as one page)	아트보드 무시 (모든 아트웍을 한 페이지로)
+	Ignore Artboards (all the art as one page)	대지 무시 (모든 아트웍을 한 페이지로)
 	Auto Grouping	자동 그룹화
 	Enhanced	향상됨
 	Ignore Color	색상 무시
@@ -2029,15 +2029,15 @@ font-technology	Variable	가변
 	Move	이동
 	Move Anchors	앵커 이동
 	Move Appearance	모양새 이동
-	Move Artboard	아트보드 이동
-	Move Artboard Up/Down	아트보드 위/아래로 이동
+	Move Artboard	대지 이동
+	Move Artboard Up/Down	대지 위/아래로 이동
 	Move Direction Handle	방향 핸들 이동
 	Move Down	아래로 이동
 	Move Effect	효과 이동
 	Move Envelope Mesh Point	엔벨로프 메시 포인트 이동
 	Move Graphic Style	그래픽 스타일 이동
 	Move Guide	안내선 이동
-	Move Locked and Hidden Artwork with Artboard	잠기거나 숨겨진 아트워크를 아트보드와 함께 이동
+	Move Locked and Hidden Artwork with Artboard	잠기거나 숨겨진 아트워크를 대지와 함께 이동
 	Move Mesh Point	메시 포인트 이동
 	Move Plane	평면 이동
 	Move Rows	행 이동
@@ -2058,8 +2058,8 @@ font-technology	Variable	가변
 	New Art Appearance	새 아트 모양새
 	New Art Brush from Selection	선택 항목으로 새 아트 브러시 만들기
 	New Art Has Basic Appearance	새 아트에 기본 모양새 적용
-	New Artboard	새 아트보드
-	Artboard	아트보드
+	New Artboard	새 대지
+	Artboard	대지
 	Exit	나가기
 	New Bristle Brush	새 강모 브러시
 	Calligraphic Brush Options	캘리그래피 브러시 옵션
@@ -2138,7 +2138,7 @@ font-technology	Variable	가변
 	New Graphic Style	새 그래픽 스타일
 	New Graphic Style (Alt-click to name it)	새 그래픽 스타일 (Alt 클릭으로 이름 지정)
 	New Graphic Style…	새 그래픽 스타일…
-	New Artboard Options…	새 아트보드 옵션…
+	New Artboard Options…	새 대지 옵션…
 	New Layer Options…	새 레이어 옵션…
 	New Layer…	새 레이어…
 	New Opacity Masks Are Clipping	새 불투명 마스크를 클리핑으로 설정
@@ -2196,7 +2196,7 @@ font-technology	Variable	가변
 	Nothing to print	인쇄할 항목 없음
 	Nudge	미세 이동
 	Nudge in Perspective	원근 미세 이동
-	Number of Artboards:	아트보드 수:
+	Number of Artboards:	대지 수:
 	Number of Colors:	색상 수:
 	Number of Recent Files to Display	표시할 최근 파일 수
 	Number of Recent Fonts	최근 글꼴 수
@@ -2221,8 +2221,8 @@ font-technology	Variable	가변
 	One Point Perspective Preset 3	1점 원근 사전 설정 3
 	One Point Perspective Preset 4	1점 원근 사전 설정 4
 	One Point Perspective Preset 5	1점 원근 사전 설정 5
-	One file per artboard: <name>-<artboard>.{ext}	아트보드당 파일 하나: <name>-<artboard>.{ext}
-	One page per artboard.	아트보드당 한 페이지.
+	One file per artboard: <name>-<artboard>.{ext}	대지당 파일 하나: <name>-<artboard>.{ext}
+	One page per artboard.	대지당 한 페이지.
 	Only Web Colors	웹 색상만
 	Opacity & Mask Define Knockout Shape	불투명도 및 마스크로 녹아웃 모양 정의
 	Opacity Mask	불투명 마스크
@@ -2271,7 +2271,7 @@ font-technology	Variable	가변
 	Open a document to navigate it.	탐색하려면 문서를 여세요.
 	Open a document to preview its flattening.	병합 미리 보기를 하려면 문서를 여세요.
 	Open a document to preview its pages	페이지를 미리 보려면 문서를 여세요
-	Open a document to see its artboards.	아트보드를 보려면 문서를 여세요.
+	Open a document to see its artboards.	대지를 보려면 문서를 여세요.
 	Open a document to see its graphic styles.	그래픽 스타일을 보려면 문서를 여세요.
 	Open a document to see its history.	히스토리를 보려면 문서를 여세요.
 	Open a document to see its swatches.	견본을 보려면 문서를 여세요.
@@ -2472,7 +2472,7 @@ mark-style	Japanese	일본식
 	Rating:	평점:
 	Real World:	실제 크기:
 	Real-time Drawing and Editing	실시간 그리기 및 편집
-	Rearrange All Artboards	모든 아트보드 재정렬
+	Rearrange All Artboards	모든 대지 재정렬
 	Rearrange All	모두 재정렬
 	Layout Order:	배치 순서:
 	Change to Left-to-Right Layout	왼쪽에서 오른쪽 배치로 변경
@@ -2480,9 +2480,9 @@ mark-style	Japanese	일본식
 	Grid by Column	열 우선 격자
 	Arrange by Row	행 방향 배열
 	Arrange by Column	열 방향 배열
-	Move Artwork with Artboard	아트보드와 함께 아트웍 이동
-	Scale Artwork with Artboard	아트보드와 함께 아트웍 크기 조절
-	Artboards: {n}	아트보드: {n}
+	Move Artwork with Artboard	대지와 함께 아트웍 이동
+	Scale Artwork with Artboard	대지와 함께 아트웍 크기 조절
+	Artboards: {n}	대지: {n}
 	Recall Selection	선택 영역 불러오기
 	Recent Colors	최근 색상
 	Recent Files	최근 파일
@@ -2687,7 +2687,7 @@ mark-style	Japanese	일본식
 	Save as preset:	사전 설정으로 저장:
 	Save changes to {name}	{name}의 변경 내용 저장
 	Save color group to Swatch panel	색상 그룹을 견본 패널에 저장
-	Save each artboard to a separate file	아트보드별로 별도 파일에 저장
+	Save each artboard to a separate file	대지별로 별도 파일에 저장
 	Save for Office Documents	Office 문서용 저장
 	Save for Web	웹용 저장
 	Save for Web Presets	웹용 저장 사전 설정
@@ -2713,7 +2713,7 @@ mark-style	Japanese	일본식
 	Scale Strokes & Effects	선 및 효과 크기 조절
 	Scale Text Attributes	텍스트 속성 크기 조절
 	Scale Tool	크기 조절 도구
-	Scale to Fit Artboard	아트보드에 맞게 크기 조절
+	Scale to Fit Artboard	대지에 맞게 크기 조절
 	Scale:	크기 조절:
 	Scaling	크기 조절
 	Scaling:	크기 조절:
@@ -2860,7 +2860,7 @@ mark-style	Japanese	일본식
 	Size:	크기:
 	Ridges per segment:	세그먼트당 융기 수:
 	Size: {size}  Tracking: {tracking}	크기: {size}  자간: {tracking}
-	Skip Blank Artboards	빈 아트보드 건너뛰기
+	Skip Blank Artboards	빈 대지 건너뛰기
 	Slice Options	슬라이스 옵션
 	Slice Selection Tool	슬라이스 선택 도구
 	Slice Tool	슬라이스 도구
@@ -3126,7 +3126,7 @@ mark-style	Japanese	일본식
 	Update Changed Links	변경된 링크 업데이트
 	Update Modified Links	수정된 링크 업데이트
 	Use 	사용 
-	Use Artboards	아트보드 사용
+	Use Artboards	대지 사용
 	Use Black Point Compensation	블랙 포인트 보정 사용
 	Use Compression	압축 사용
 	Use Even-Odd Fill Rule	짝홀 칠 규칙 사용
@@ -3179,7 +3179,7 @@ mark-style	Japanese	일본식
 	Vertical Type Tool	세로 문자 도구
 	Vertical Type on a Path Tool	패스 상의 세로 문자 도구
 	Vertical:	세로:
-	View Artboard Only	아트보드만 보기
+	View Artboard Only	대지만 보기
 	View Opacity Mask	불투명 마스크 보기
 	View PDF after saving	저장 후 PDF 보기
 	Viewing Angle:	시야각:
@@ -3294,7 +3294,7 @@ gradient-kind	Radial	방사형
 	Bristle	강모
 	Calligraphic	서예
 	Cap	끝 모양
-	Center on Artboard	아트보드 중앙에 배치
+	Center on Artboard	대지 중앙에 배치
 	Center-Justified Tab	가운데 정렬 탭
 	Change Screen Mode (F)	화면 모드 변경 (F)
 	Character Style	문자 스타일
@@ -3656,7 +3656,7 @@ imageTrace	Outline	윤곽선
 @plural	{n} star|{n} stars	별 {n}개|별 {n}개
 @plural	{n} step|{n} steps	단계 {n}개|단계 {n}개
 @plural	{n} stroke|{n} strokes	선 {n}개|선 {n}개
-	Delete Anchor Points	앵커 포인트 삭제
+	Delete Anchor Points	고정점 삭제
 	Edit Selection	선택 영역 편집
 	Saved Selection 1	저장된 선택 영역 1
 	Saved Selection 2	저장된 선택 영역 2
@@ -3815,7 +3815,7 @@ theme	Appearance	외관
 @msg	Sent to {_1}	{_1}(으)로 보냈습니다
 @msg	`to` must be "corner" or "smooth"	`to`는 "corner" 또는 "smooth"여야 합니다
 @msg	a layer couldn't be read	레이어를 읽을 수 없습니다
-@msg	it has more than one artboard	아트보드가 둘 이상입니다
+@msg	it has more than one artboard	대지가 둘 이상입니다
 @msg	its editing data has no layers	편집 데이터에 레이어가 없습니다
 @msg	its editing data is damaged	편집 데이터가 손상되었습니다
 @msg	its zlib compression is damaged	zlib 압축이 손상되었습니다
@@ -3835,10 +3835,10 @@ theme	Appearance	외관
 @msg	The last start of VectorCraft ended while it listed the graphics processors, so it started on {summary} with OpenGL alone. To try the other graphics backends again, change Preferences › Performance › Graphics Processor or start with WGPU_BACKEND set	지난번 VectorCraft 시작이 그래픽 프로세서 목록을 가져오는 중에 끝나서 OpenGL만 사용해 {summary}에서 시작했습니다. 다른 그래픽 백엔드를 다시 시도하려면 환경 설정 › 성능 › 그래픽 프로세서를 변경하거나 WGPU_BACKEND를 설정하고 시작하세요
 @msg	not a DXF drawing	DXF 도면이 아닙니다
 @msg	scale must be a number from {_1} to {_2}, not {s}	배율은 {_1}에서 {_2} 사이의 숫자여야 합니다: {s}
-@msg	the artboard to fit must be a positive size up to {_1} pt	맞출 아트보드는 최대 {_1} pt까지의 양수 크기여야 합니다
+@msg	the artboard to fit must be a positive size up to {_1} pt	맞출 대지는 최대 {_1} pt까지의 양수 크기여야 합니다
 @msg	the drawing has no layout `{_1}` (it has {_2})	도면에 레이아웃 `{_1}`이(가) 없습니다(있는 레이아웃: {_2})
 @msg	this is a DWG drawing, which can't be read: save it from the CAD app as an ASCII DXF and open that	DWG 도면은 읽을 수 없습니다. CAD 앱에서 ASCII DXF로 저장한 후 여세요
-@msg	at this scale the drawing is {w} × {h} pt, more than the canvas holds: choose a smaller scale or fit it to the artboard	이 배율에서는 도면이 {w} × {h} pt로 캔버스 크기를 넘습니다. 더 작은 배율을 고르거나 아트보드에 맞추세요
+@msg	at this scale the drawing is {w} × {h} pt, more than the canvas holds: choose a smaller scale or fit it to the artboard	이 배율에서는 도면이 {w} × {h} pt로 캔버스 크기를 넘습니다. 더 작은 배율을 고르거나 대지에 맞추세요
 @msg	the scale is not a usable number	배율이 사용할 수 없는 숫자입니다
 @msg	the drawing is too large to open	도면이 너무 커서 열 수 없습니다
 @msg	scale must be a number from {_1} to {_2}, not {_3}	배율은 {_1}에서 {_2} 사이의 숫자여야 합니다: {_3}
@@ -3902,8 +3902,8 @@ theme	Appearance	외관
 @msg	handle must be in or out	handle은 in 또는 out이어야 합니다
 @msg	no saved selection recalled	불러온 저장된 선택 영역이 없습니다
 @msg	no saved selections	저장된 선택 영역이 없습니다
-@msg	no such artboard	해당 아트보드가 없습니다
-@msg	the artboard is locked	아트보드가 잠겨 있습니다
+@msg	no such artboard	해당 대지가 없습니다
+@msg	the artboard is locked	대지가 잠겨 있습니다
 @msg	cannot split an open path at its end point	열린 패스는 끝점에서 나눌 수 없습니다
 @msg	closing needs three anchors	닫으려면 앵커가 세 개 필요합니다
 @msg	empty brush stroke	빈 브러시 선입니다
@@ -3927,10 +3927,10 @@ theme	Appearance	외관
 @msg	Targa files are RGB: colorModel rgb	Targa 파일은 RGB입니다: colorModel rgb
 @msg	antiAlias `{id}`: none, art or type	antiAlias `{id}`: none, art 또는 type이어야 합니다
 @msg	background {other}: transparent, white, black or a colour such as "#ff8800"	배경 {other}: transparent, white, black 또는 "#ff8800" 같은 색상이어야 합니다
-@msg	no artboard {i} (0-based; the document has {count})	아트보드 {i}이(가) 없습니다(0부터 시작, 문서의 아트보드 수: {count})
-@msg	no artboards named	이름이 지정된 아트보드가 없습니다
-@msg	the document has no artboard	문서에 아트보드가 없습니다
-@msg	this format holds one artboard: export several as PDF or with document.exportForScreens	이 형식은 아트보드를 하나만 담을 수 있습니다. 여러 개는 PDF로 내보내거나 document.exportForScreens를 사용하세요
+@msg	no artboard {i} (0-based; the document has {count})	대지 {i}이(가) 없습니다(0부터 시작, 문서의 대지 수: {count})
+@msg	no artboards named	이름이 지정된 대지가 없습니다
+@msg	the document has no artboard	문서에 대지가 없습니다
+@msg	this format holds one artboard: export several as PDF or with document.exportForScreens	이 형식은 대지를 하나만 담을 수 있습니다. 여러 개는 PDF로 내보내거나 document.exportForScreens를 사용하세요
 @msg	this file was saved without PDF compatibility, and its editing data can't be read ({why})	이 파일은 PDF 호환성 없이 저장되어 편집 데이터를 읽을 수 없습니다({why})
 @msg	the export wrote no file	내보내기에서 파일이 만들어지지 않았습니다
 @msg	{_1} files can be opened but not written (see document.formats)	{_1} 파일은 열 수 있지만 쓸 수 없습니다(document.formats 참조)
@@ -4001,11 +4001,11 @@ theme	Appearance	외관
 @msg	select a blend or give `id`	블렌드를 선택하거나 `id`를 지정하세요
 @msg	select a gradient mesh	그레이디언트 메시를 선택하세요
 @msg	the object has no opacity mask	개체에 불투명 마스크가 없습니다
-@msg	Convert to Artboards: selection has no area	아트보드로 변환: 선택 항목에 면적이 없습니다
+@msg	Convert to Artboards: selection has no area	대지로 변환: 선택 항목에 면적이 없습니다
 @msg	Convert to Shape: no rectangles or ellipses selected	모양으로 변환: 선택한 사각형이나 타원이 없습니다
 @msg	image would be too large; lower the resolution	이미지가 너무 커집니다. 해상도를 낮추세요
 @msg	clipboard is empty	클립보드가 비어 있습니다
-@msg	no anchor points selected	선택한 앵커 포인트가 없습니다
+@msg	no anchor points selected	선택한 고정점이 없습니다
 @msg	select at least two objects	개체를 두 개 이상 선택하세요
 @msg	no saved presets	저장된 프리셋이 없습니다
 @msg	compound paths can only contain paths	컴파운드 패스에는 패스만 넣을 수 있습니다
@@ -4024,13 +4024,13 @@ theme	Appearance	외관
 @msg	the object already has an opacity mask	개체에 이미 불투명 마스크가 있습니다
 @msg	`{name}` is a process colour: tints apply to global and spot colours	`{name}`은(는) 프로세스 색상입니다. 색조는 글로벌 색상과 별색에만 적용됩니다
 @msg	`{name}` isn't a colour swatch	`{name}`은(는) 색상 견본이 아닙니다
-@msg	a document needs at least one artboard	문서에는 아트보드가 하나 이상 있어야 합니다
+@msg	a document needs at least one artboard	문서에는 대지가 하나 이상 있어야 합니다
 @msg	empty path	빈 패스입니다
 @msg	join needs open paths	연결하려면 열린 패스가 필요합니다
 @msg	path is already closed	패스가 이미 닫혀 있습니다
 @msg	select paths to join	연결할 패스를 선택하세요
-@msg	direct-select anchor points to cut at (not the end points of open paths)	자를 앵커 포인트를 직접 선택하세요(열린 패스의 끝점 제외)
-@msg	select paths or anchor points	패스 또는 앵커 포인트를 선택하세요
+@msg	direct-select anchor points to cut at (not the end points of open paths)	자를 고정점을 직접 선택하세요(열린 패스의 끝점 제외)
+@msg	select paths or anchor points	패스 또는 고정점을 선택하세요
 @msg	Divide Objects Below: select a path	아래 개체 분할: 패스를 선택하세요
 @msg	Divide Objects Below: select exactly one path	아래 개체 분할: 패스를 하나만 선택하세요
 @msg	Offset Path: select paths	패스 오프셋: 패스를 선택하세요
@@ -4056,7 +4056,7 @@ theme	Appearance	외관
 @msg	a clipping path can't be attached to a path	클리핑 패스는 패스에 부착할 수 없습니다
 @msg	select the art to repeat	반복할 아트웍을 선택하세요
 @msg	the document has no patterns	문서에 패턴이 없습니다
-@msg	no artboard	아트보드가 없습니다
+@msg	no artboard	대지가 없습니다
 @msg	installing from a path is not available on the web; pass the module as `dataBase64`	웹에서는 경로로 설치할 수 없습니다. 모듈을 `dataBase64`로 전달하세요
 @msg	`{key}` must be `auto` or a language code such as `en` or `zh-hant`	`{key}`은(는) `auto` 또는 `en`, `zh-hant` 같은 언어 코드여야 합니다
 @msg	`{key}` must be a #rrggbb color	`{key}`은(는) #rrggbb 색상이어야 합니다
@@ -4077,7 +4077,7 @@ theme	Appearance	외관
 @msg	recovery copy `{file}`: {e}	복구 복사본 `{file}`: {e}
 @msg	{name}: no such recovery entry	{name}: 해당 복구 항목이 없습니다
 @msg	Combine Slices: the slices have no bounds	슬라이스 결합: 슬라이스에 경계가 없습니다
-@msg	Create from Guides: the document has no artboard	안내선에서 만들기: 문서에 아트보드가 없습니다
+@msg	Create from Guides: the document has no artboard	안내선에서 만들기: 문서에 대지가 없습니다
 @msg	Create from Guides: the guides make more than {MAX_PIECES} slices	안내선에서 만들기: 안내선으로 슬라이스가 {MAX_PIECES}개를 넘게 만들어집니다
 @msg	Create from Selection: the selection has no area	선택 영역에서 만들기: 선택 영역에 면적이 없습니다
 @msg	Release: no layer to put the rectangle in	해제: 사각형을 넣을 레이어가 없습니다
@@ -4101,7 +4101,7 @@ theme	Appearance	외관
 @msg	Save for Web: the image is empty	웹용으로 저장: 이미지가 비어 있습니다
 @msg	colorTable.{what}: `{h}` is not a colour such as "#ff8800"	colorTable.{what}: `{h}`은(는) "#ff8800" 같은 색상이 아닙니다
 @msg	colorTable.{what}: at most {MAX_TABLE} colours	colorTable.{what}: 색상은 최대 {MAX_TABLE}개입니다
-@msg	no artboard {i} (0-based; the document has {_1})	아트보드 {i}이(가) 없습니다(0부터 시작, 문서의 아트보드 수: {_1})
+@msg	no artboard {i} (0-based; the document has {_1})	대지 {i}이(가) 없습니다(0부터 시작, 문서의 대지 수: {_1})
 @msg	no selected slice in the image: select slices, or save all of them	이미지에 선택한 슬라이스가 없습니다. 슬라이스를 선택하거나 모두 저장하세요
 @msg	nothing to save: the document has no visible art	저장할 항목이 없습니다. 문서에 보이는 아트웍이 없습니다
 @msg	percent must be above 0 and at most 6400, not {p}	퍼센트는 0 초과 6400 이하여야 합니다: {p}
@@ -4176,7 +4176,7 @@ theme	Appearance	외관
 @msg	it has too many text objects	텍스트 개체가 너무 많습니다
 @msg	it has too much text	텍스트가 너무 많습니다
 @msg	its editing data doesn't say where its art is	편집 데이터에 아트웍의 위치가 없습니다
-@msg	its editing data doesn't say where its artboard is	편집 데이터에 아트보드의 위치가 없습니다
+@msg	its editing data doesn't say where its artboard is	편집 데이터에 대지의 위치가 없습니다
 @msg	its editing data is for a {w} × {h} pt page, not the file's {pw} × {ph} pt page	편집 데이터가 파일의 {pw} × {ph} pt 페이지가 아닌 {w} × {h} pt 페이지용입니다
 @msg	its editing data is for a {w} × {h} pt page, the file's {pw} × {ph} pt page at {scale}	편집 데이터가 {w} × {h} pt 페이지용입니다. 파일의 {pw} × {ph} pt 페이지를 {scale} 배율로 나타낸 것입니다
 @msg	its page has text, and its layers have no text objects to put it in	페이지에 텍스트가 있지만 레이어에는 이를 넣을 텍스트 개체가 없습니다
@@ -4219,7 +4219,7 @@ theme	Appearance	외관
 @msg	a stream's length isn't a number	스트림 길이가 숫자가 아닙니다
 @msg	bad stream length	잘못된 스트림 길이
 @msg	PDF writer error: {0}	PDF 기록 오류: {0}
-@msg	artboard {0} does not exist	아트보드 {0}이(가) 없습니다
+@msg	artboard {0} does not exist	대지 {0}이(가) 없습니다
 @msg	cannot read PDF: {0}	PDF를 읽을 수 없습니다: {0}
 @msg	invalid PDF setting: {0}	잘못된 PDF 설정: {0}
 @msg	page {0} does not exist (the PDF has {1})	페이지 {0}이(가) 없습니다(PDF의 페이지 수: {1})
@@ -4261,7 +4261,7 @@ theme	Appearance	외관
 @msg	image is empty	이미지가 비어 있습니다
 @msg	the image is {width} × {height} pixels, more than Image Trace takes ({max} megapixels)	이미지가 {width} × {height}픽셀로, 이미지 추적이 처리하는 한도({max}메가픽셀)를 넘습니다
 @msg	this isn't a flat-colour logo ({_1}% of its solid areas match a few flat colours), so Flat Logo mode would turn its gradients into patches: use Color mode instead	단색 로고가 아닙니다(단색 영역의 {_1}%만 몇 가지 단색과 일치): 단색 로고 모드는 그레이디언트를 패치로 바꾸므로 색상 모드를 사용하세요
-@msg	this trace would make more than {max} anchor points, more than the document can show smoothly: raise Noise, lower Paths or Colors, or pick a lower-fidelity preset	이 추적은 앵커 포인트가 {max}개를 넘게 만들어 문서가 매끄럽게 표시할 수 있는 한도를 넘습니다: 노이즈를 높이거나 패스 또는 색상 수를 낮추거나 정밀도가 낮은 프리셋을 선택하세요
+@msg	this trace would make more than {max} anchor points, more than the document can show smoothly: raise Noise, lower Paths or Colors, or pick a lower-fidelity preset	이 추적은 고정점이 {max}개를 넘게 만들어 문서가 매끄럽게 표시할 수 있는 한도를 넘습니다: 노이즈를 높이거나 패스 또는 색상 수를 낮추거나 정밀도가 낮은 프리셋을 선택하세요
 @msg	internal error: {msg} (please report this bug)	내부 오류: {msg}(이 버그를 신고해 주세요)
 @msg	the background worker stopped	백그라운드 작업이 중지되었습니다
 @msg	the blend has no spine	블렌드에 스파인이 없습니다
@@ -4285,7 +4285,7 @@ theme	Appearance	외관
 @msg	`{id}` has no envelope dialog	`{id}`에는 엔벨로프 대화상자가 없습니다
 @msg	select an envelope	엔벨로프를 선택하세요
 @msg	no format to export to	내보낼 형식이 없습니다
-@msg	nothing to export: the document has no visible art (or turn on Use Artboards)	내보낼 항목이 없습니다: 문서에 보이는 아트웍이 없습니다(또는 아트보드 사용을 켜세요)
+@msg	nothing to export: the document has no visible art (or turn on Use Artboards)	내보낼 항목이 없습니다: 문서에 보이는 아트웍이 없습니다(또는 대지 사용을 켜세요)
 @msg	add a format to export	내보낼 형식을 추가하세요
 @msg	check an asset to export	내보낼 자산을 체크하세요
 @msg	check a layer to export	내보낼 레이어를 선택하십시오
@@ -4402,7 +4402,7 @@ theme	Appearance	외관
 @msg	no such view	해당 보기가 없습니다
 @msg	printing isn't available here	여기서는 인쇄할 수 없습니다
 @msg	select an image	이미지를 선택하세요
-@msg	the document has no artboards	문서에 아트보드가 없습니다
+@msg	the document has no artboards	문서에 대지가 없습니다
 @msg	tool (a tool id) is required	도구(도구 id)가 필요합니다
 @msg	unknown tool `{t}`	알 수 없는 도구 `{t}`
 @msg	no such action	해당 동작이 없습니다
@@ -4975,7 +4975,7 @@ lighting	Light	광원
 @msg	unknown snap option `{key}` (use {options})	알 수 없는 스냅 옵션 `{key}` ({options} 중에서 사용하세요)
 	Gap Length:	간격 길이:
 @msg	Flat Logo traced the image at {_1} × {_2} pixels, averaged down from {_3} × {_4}.	단색 로고 모드에서 이미지를 {_3} × {_4}에서 평균을 내어 축소한 {_1} × {_2}픽셀로 추적했습니다.
-	Artboard {n} of {total}	아트보드 {n} / {total}
+	Artboard {n} of {total}	대지 {n} / {total}
 	File {n} of {total}	파일 {n} / {total}
 	Encoding and writing the file…	파일을 인코딩하고 쓰는 중…
 @plural	{n} more export waiting|{n} more exports waiting	대기 중인 내보내기 {n}개 더
@@ -5004,8 +5004,8 @@ lighting	Light	광원
 @msg	the file's variables and data sets weren't read (variables: {variables}, data sets: {data_sets}): the Variables panel doesn't list them	파일의 변수와 데이터 세트를 읽지 않았습니다(변수: {variables}, 데이터 세트: {data_sets}). 변수 패널에 표시되지 않습니다
 # Select by Color (select.color)
 	Select by Color	색상별 선택
-	Move Anchor Point	앵커 포인트 이동
-@msg	{label} keeps 1 of the document's {n} artboards: the file reopens with one. Turn on Preserve Editing Capabilities to keep them all.	{label}은(는) 문서의 아트보드 {n}개 중 1개만 유지하며 파일은 아트보드 하나로 다시 열립니다. 모두 유지하려면 편집 기능 보존을 켜십시오.
+	Move Anchor Point	고정점 이동
+@msg	{label} keeps 1 of the document's {n} artboards: the file reopens with one. Turn on Preserve Editing Capabilities to keep them all.	{label}은(는) 문서의 대지 {n}개 중 1개만 유지하며 파일은 대지 하나로 다시 열립니다. 모두 유지하려면 편집 기능 보존을 켜십시오.
 	Chalk & Charcoal…	분필과 목탄…
 	Chalk & Charcoal	분필과 목탄
 	Graphic Pen…	그래픽 펜…
@@ -5084,8 +5084,8 @@ axis	Y Axis	Y축
 	Stop Global Edit	전체 편집 중지
 	Global Edit Options	전체 편집 옵션
 	Match	일치
-	On Artboards	아트보드에서
-	All Artboards	모든 아트보드
+	On Artboards	대지에서
+	All Artboards	모든 대지
 	Include Objects On Canvas	캔버스의 개체 포함
 	Result(s): {count}	결과: {count}
 @msg	select one object	개체 하나를 선택하십시오
@@ -5126,3 +5126,91 @@ axis	Y Axis	Y축
 	Rectangular Grid Tool Options	사각형 격자 도구 옵션
 	Polar Grid Tool Options	극좌표 격자 도구 옵션
 	Fill Line	선 채우기
+
+# Original beginner tool descriptions (AI-assisted; native review welcome).
+	Select whole objects and drag them to reposition them.	개체 전체를 선택하고 드래그해 옮깁니다.
+	Select and move individual anchor points or path segments.	패스의 고정점이나 선분을 개별적으로 선택해 옮깁니다.
+	Click to place anchor points; drag to set curve direction handles.	클릭해 고정점을 찍고 드래그해 곡선의 방향 핸들을 조절합니다.
+	Drag to draw a freehand path.	자유롭게 드래그해 패스를 그립니다.
+	Drag to draw a rectangle.	드래그해 사각형을 그립니다.
+	Drag to draw an ellipse.	드래그해 타원을 그립니다.
+	Drag to draw a polygon.	드래그해 다각형을 그립니다.
+	Drag to draw a star.	드래그해 별 모양을 그립니다.
+	Select a board to adjust the area used for export or printing.	대지를 선택해 내보내거나 인쇄할 영역을 조절합니다.
+	Click to place text, or draw an area for text.	클릭해 문자를 배치하거나 문자 영역을 그립니다.
+	Sample appearance from another object.	다른 개체의 모양 속성을 가져옵니다.
+	Drag to pan the view without moving objects.	개체를 옮기지 않고 보이는 위치만 드래그해 바꿉니다.
+	Change the view magnification without resizing artwork.	그림의 크기를 바꾸지 않고 화면의 확대율을 조절합니다.
+	Click an existing path to add an anchor point.	기존 패스를 클릭해 고정점을 추가합니다.
+	Click an existing anchor point to remove it from its path.	기존 고정점을 클릭해 패스에서 제거합니다.
+	Draw around anchor points to select them together.	고정점 주위에 윤곽을 그려 여러 점을 한꺼번에 선택합니다.
+	Sketch a rough outline to create a regular shape.	대략적인 윤곽을 그려 정돈된 도형을 만듭니다.
+	Drag across artwork to erase parts of its shapes.	그림 위를 드래그해 도형의 일부를 지웁니다.
+	Draw a path using the current brush appearance.	현재 브러시 모양으로 패스를 그립니다.
+	Place points to draw a curve through them.	점을 찍어 그 점들을 지나는 곡선을 그립니다.
+	Drag on a stroke to change its width at that point.	획 위에서 드래그해 해당 위치의 두께를 바꿉니다.
+	Rotate the selected objects around a reference point.	선택한 개체를 기준점 주위로 회전합니다.
+	Choose regions of overlapping shapes to build a new shape.	겹친 도형의 영역을 골라 새 도형을 만듭니다.
+	Measure the artwork and add a dimension annotation.	그림의 길이나 간격을 재고 치수를 표시합니다.
+	Use a shape as the area that contains text.	도형 안을 문자를 담는 영역으로 사용합니다.
+	Rotate the canvas view without rotating the artwork.	그림 자체는 그대로 두고 화면에서 캔버스만 회전합니다.
+	Adjust the direction and extent of a gradient on the selected object.	선택한 개체에서 그레이디언트의 방향과 범위를 조절합니다.
+
+# Additional interface labels and explanations.
+	Reset to Defaults	기본값으로 재설정
+	Remove the shortcut	단축키 제거
+	Press keys…	키를 누르세요…
+	Use Default	기본값 사용
+	All shortcuts reset to defaults.	모든 단축키를 기본값으로 재설정했습니다.
+	Click, then press the new shortcut (Esc cancels)	클릭한 다음 새 단축키를 누르세요(Esc로 취소).
+	Set:	세트:
+	Tool	도구
+	Keyboard Shortcuts	키보드 단축키
+	Go to Conflict	충돌하는 항목으로 이동
+
+# Default swatch display names; user-defined names remain unchanged.
+swatch	Amber	호박색
+swatch	Aqua	물빛색
+swatch	Azure	하늘색
+swatch	Black	검정
+swatch	Blue	파랑
+swatch	Bright Blue	밝은 파랑
+swatch	Bright Green	밝은 녹색
+swatch	Bright Red	밝은 빨강
+swatch	Bright Violet	밝은 보라
+swatch	Bright Yellow	밝은 노랑
+swatch	Brights	밝은 색
+swatch	Brown	갈색
+swatch	Chocolate	초콜릿색
+swatch	Coffee	커피색
+swatch	Copper	구릿빛
+swatch	Cyan	시안
+swatch	Cyan Green	청록빛 녹색
+swatch	Emerald	에메랄드색
+swatch	Espresso	에스프레소색
+swatch	Grays	회색 계열
+swatch	Green	녹색
+swatch	Indigo	남색
+swatch	Lime	라임색
+swatch	Magenta	마젠타
+swatch	Ocean	바다색
+swatch	Orange	주황
+swatch	Orange Red	주홍
+swatch	Pink	분홍
+swatch	Purple	자주
+swatch	Radial White, Black	방사형 흰색, 검정
+swatch	Red	빨강
+swatch	Rose	장미색
+swatch	Rust	녹슨 쇠색
+swatch	Sand	모래색
+swatch	Sunset	노을색
+swatch	Tan	황갈색
+swatch	Teal	짙은 청록
+swatch	Violet	보라
+swatch	Walnut	호두색
+swatch	White	흰색
+swatch	White, Black	흰색, 검정
+swatch	Yellow	노랑
+swatch	Yellow Green	연두
+swatch	[None]	[없음]
+swatch	[Registration]	[맞춰찍기]

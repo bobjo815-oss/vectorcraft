@@ -423,7 +423,7 @@ impl Builder {
 
     /// `n` with its colour and gradient overlays baked into its paint and pixels (VectorCraft has
     /// no overlay effect).
-    fn overlaid<'n>(&mut self, n: &'n af::Node) -> std::borrow::Cow<'n, af::Node> {
+    fn overlaid<'n>(&mut self, n: &'n af::Node) -> Box<std::borrow::Cow<'n, af::Node>> {
         // Each kind of message once, however often it is heard.
         let mut warnings: Vec<String> = Vec::new();
         let mut work = self.overlay_work;
@@ -436,7 +436,9 @@ impl Builder {
         for w in warnings {
             self.warn(&w);
         }
-        out
+        // Cow's owned variant contains the entire large node. Keep it off
+        // the recursive caller's stack even when the overlay is borrowed.
+        Box::new(out)
     }
 
     /// One Affinity node (and its subtree) as VectorCraft art; `to_doc` maps document pixels to
@@ -455,7 +457,7 @@ impl Builder {
                 return None;
             }
         }
-        let n = &*self.overlaid(n);
+        let n = &**self.overlaid(n);
         // Register before descending so nested artboards keep their document order. Inside an
         // embedded document an artboard is just its content's frame.
         if let Kind::Artboard { rect, .. } = &n.kind
@@ -471,6 +473,12 @@ impl Builder {
         self.embedded += usize::from(embeds);
         let children: Vec<Arc<Node>> = n.children.iter().filter_map(|c| self.node(c, to_doc, boards, child_level, depth + 1)).collect();
         self.embedded -= usize::from(embeds);
+        self.finish_node(n, to_doc, children, layer_level)
+    }
+
+    // Build the large Node/NodeKind temporaries after recursion has unwound.
+    // Keeping these in node's frame exhausts a 1 MB stack on valid deep groups.
+    fn finish_node(&mut self, n: &af::Node, to_doc: Affine, children: Vec<Arc<Node>>, layer_level: bool) -> Option<Arc<Node>> {
         let mut out = match &n.kind {
             Kind::Layer if layer_level => {
                 let mut l = (*self.layer_with(Some(if n.name.is_empty() { "Layer" } else { &n.name }), children)).clone();

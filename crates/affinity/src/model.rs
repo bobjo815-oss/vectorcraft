@@ -559,6 +559,12 @@ pub(crate) struct Reader<'s, 'a, 'b> {
     pub(crate) budget: Budget,
 }
 
+struct NodeStart {
+    node: Box<Node>,
+    world: Affine,
+    embedded: Option<Vec<Node>>,
+}
+
 impl<'s, 'a, 'b> Reader<'s, 'a, 'b> {
     pub(crate) fn new(s: &'s Stream, archive: &'b mut Archive<'a>, base: Affine, depth: usize) -> Self {
         let [a, b, c, d, ..] = base.0;
@@ -671,14 +677,13 @@ impl<'s, 'a, 'b> Reader<'s, 'a, 'b> {
                 continue;
             }
             if let Some(n) = self.node(c, world, depth + 1)? {
-                out.push(n);
+                out.push(*n);
             }
         }
         Ok((out, mask))
     }
 
-    fn node(&mut self, id: ObjId, parent: Affine, depth: usize) -> Result<Option<Node>, Error> {
-        let s = self.s;
+    fn node(&mut self, id: ObjId, parent: Affine, depth: usize) -> Result<Option<Box<Node>>, Error> {
         if depth > MAX_TREE_DEPTH {
             self.warn("layers nested deeper than 128 levels");
             return Ok(None);
@@ -692,6 +697,21 @@ impl<'s, 'a, 'b> Reader<'s, 'a, 'b> {
             self.warn("a layer that contains itself");
             return Ok(None);
         }
+        // Keep the large Kind/Node values and their decoding temporaries out of
+        // recursive frames, so the existing layer cap fits a 1 MB Windows stack.
+        let NodeStart { mut node, world, embedded } = self.start_node(id, parent)?;
+        // A compound's children are its operands, already merged into its outline.
+        let (mut children, child_mask) = if node.class == Tag::of(b"Comp") { (Vec::new(), None) } else { self.children(id, world, depth)? };
+        if let Some(embedded) = embedded {
+            children.extend(embedded);
+        }
+        node.children = children;
+        self.finish_node(id, world, &mut node, child_mask)?;
+        Ok(Some(node))
+    }
+
+    fn start_node(&mut self, id: ObjId, parent: Affine) -> Result<NodeStart, Error> {
+        let s = self.s;
         let local = s.floats::<6>(id, b"Xfrm").map(Affine::from_xfrm).unwrap_or(Affine::IDENTITY);
         let world = local.then(parent);
         let class = s.class(id).unwrap_or(Tag(0));
@@ -716,26 +736,38 @@ impl<'s, 'a, 'b> Reader<'s, 'a, 'b> {
         };
         // This node's embedded content, before its children's `node` calls can take it.
         let embedded = self.pending.take();
-        // A compound's children are its operands, already merged into its outline.
-        let (mut children, child_mask) = if class == Tag::of(b"Comp") { (Vec::new(), None) } else { self.children(id, world, depth)? };
-        if let Some(embedded) = embedded {
-            children.extend(embedded);
-        }
+        let node = Box::new(Node {
+            class,
+            name,
+            visible,
+            locked,
+            opacity,
+            blend,
+            kind,
+            mask: None,
+            pixel_mask: None,
+            effects: Vec::new(),
+            children: Vec::new(),
+        });
+        Ok(NodeStart { node, world, embedded })
+    }
+
+    fn finish_node(&mut self, id: ObjId, world: Affine, node: &mut Node, child_mask: Option<(ObjId, Affine)>) -> Result<(), Error> {
         // Pixel masks are read only over what they mask (they can span a whole spread at print
         // resolution, a gigapixel).
-        let over = mask_extent(&kind, &children);
+        let over = mask_extent(&node.kind, &node.children);
         let child_mask = match child_mask {
             Some((c, at)) => crate::raster::mask(self, c, at, over)?,
             None => None,
         };
         let (mask, attached_mask) = self.attached_masks(id, world, over)?;
-        let pixel_mask = attached_mask.or(child_mask);
+        node.mask = mask;
+        node.pixel_mask = attached_mask.or(child_mask);
         self.active.remove(&id);
-        let mut node = Node { class, name, visible, locked, opacity, blend, kind, mask, pixel_mask, effects: Vec::new(), children };
         // Gradient overlays are laid out over the node's bounds, also while it is hidden.
-        let bounds = tree_bounds(&node);
+        let bounds = tree_bounds(node);
         node.effects = self.effects(id, world, bounds);
-        Ok(Some(node))
+        Ok(())
     }
 
     fn kind(&mut self, id: ObjId, class: Tag, world: Affine, parent: Affine) -> Result<Kind, Error> {

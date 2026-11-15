@@ -109,3 +109,14 @@ font for the web build.
 | 2026-10-12 | minor | Georgian (`ka`) catalog, complete |
 | 2026-10-11 | minor | Czech render-site follow-up: file-dialog filters, diagnostics, preset numbering, contributor tooltips/plurals, gradient grammar and contextual printer mark styles; estimates unchanged |
 | 2026-10-10 | major | First per-language table, measured from the catalog row counts against the complete French catalog |
+
+## Korean beginner toolbar help
+Hover over a supported tool in the toolbar, a tool flyout, or the All Tools
+drawer for a short explanation below the tool name and shortcut. This pass
+covers 27 common tools. Terms such as 대지 (artboard) and 고정점 (anchor point)
+follow the shared Craft Korean glossary. The descriptions are AI assisted;
+native review is welcome.
+
+The Korean catalog also covers all 45 default swatch and swatch-group names
+reported by the localization audit. These contextual display names do not rename
+user-created swatches or change the underlying document data.

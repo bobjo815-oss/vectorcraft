@@ -620,7 +620,7 @@ fn row(ui: &mut Ui, t: &Tokens, tool: &'static ToolInfo, on: bool, dimmed: bool)
         egui::FontId::proportional(12.5),
         color,
     );
-    resp.on_hover_text(crate::toolbar::tip(tool)).clicked()
+    resp.on_hover_text(crate::toolbar::hover_tip(tool)).clicked()
 }
 
 /// The tool being dragged, by the pointer (below and right of it, clear of the drop marker).

@@ -73,6 +73,41 @@ pub(crate) fn tip(t: &ToolInfo) -> String {
     }
 }
 
+pub(crate) fn hover_tip(tool: &ToolInfo) -> String {
+    let label = tip(tool);
+    let help = match tool.id {
+        "selection" => tl!("Select whole objects and drag them to reposition them."),
+        "directSelection" => tl!("Select and move individual anchor points or path segments."),
+        "pen" => tl!("Click to place anchor points; drag to set curve direction handles."),
+        "pencil" => tl!("Drag to draw a freehand path."),
+        "rectangle" => tl!("Drag to draw a rectangle."),
+        "ellipse" => tl!("Drag to draw an ellipse."),
+        "polygon" => tl!("Drag to draw a polygon."),
+        "star" => tl!("Drag to draw a star."),
+        "artboard" => tl!("Select a board to adjust the area used for export or printing."),
+        "type" => tl!("Click to place text, or draw an area for text."),
+        "eyedropper" => tl!("Sample appearance from another object."),
+        "hand" => tl!("Drag to pan the view without moving objects."),
+        "zoom" => tl!("Change the view magnification without resizing artwork."),
+        "addAnchor" => tl!("Click an existing path to add an anchor point."),
+        "deleteAnchor" => tl!("Click an existing anchor point to remove it from its path."),
+        "lasso" => tl!("Draw around anchor points to select them together."),
+        "shaper" => tl!("Sketch a rough outline to create a regular shape."),
+        "eraser" => tl!("Drag across artwork to erase parts of its shapes."),
+        "paintbrush" => tl!("Draw a path using the current brush appearance."),
+        "curvature" => tl!("Place points to draw a curve through them."),
+        "width" => tl!("Drag on a stroke to change its width at that point."),
+        "rotate" => tl!("Rotate the selected objects around a reference point."),
+        "shapeBuilder" => tl!("Choose regions of overlapping shapes to build a new shape."),
+        "dimension" => tl!("Measure the artwork and add a dimension annotation."),
+        "areaType" => tl!("Use a shape as the area that contains text."),
+        "rotateView" => tl!("Rotate the canvas view without rotating the artwork."),
+        "gradient" => tl!("Adjust the direction and extent of a gradient on the selected object."),
+        _ => return label,
+    };
+    format!("{label}\n\n{help}")
+}
+
 /// Slots of the current layout, as Edit Toolbar left it: (category label for the first slot of a
 /// category, tool ids).
 pub(crate) fn slots(app: &VectorcraftApp) -> Vec<(Option<&'static str>, Vec<&'static str>)> {
@@ -263,7 +298,7 @@ fn body(app: &mut VectorcraftApp, ui: &mut Ui, cols: usize, floating: Option<egu
                         app.select_tool(shown.id);
                     }
                     resp.widget_info(|| egui::WidgetInfo::selected(egui::WidgetType::Button, ui.is_enabled(), is_active, tip(shown)));
-                    resp.on_hover_text(tip(shown));
+                    resp.on_hover_text(hover_tip(shown));
                 }
             });
             i += row.len();
@@ -656,7 +691,7 @@ fn tool_rows(ui: &mut Ui, t: &Tokens, active: &str, tools: &[String]) -> Option<
             ui.painter().galley(pos2(r.right() - ROW_END - sc.size().x, r.center().y - sc.size().y / 2.0), sc, color);
         }
         resp.widget_info(|| egui::WidgetInfo::selected(egui::WidgetType::Button, ui.is_enabled(), is_active, tip(tool)));
-        if resp.clicked() {
+        if resp.on_hover_text(hover_tip(tool)).clicked() {
             chosen = Some(tool.id);
         }
     }
@@ -710,7 +745,7 @@ fn tool_strip(ui: &mut Ui, t: &Tokens, active: &str, tools: &[String]) -> Option
         let ir = egui::Rect::from_center_size(r.center(), vec2(18.0, 18.0));
         icons::paint(ui, icons::tool_icon(tool.icon), ir, if active == tool.id { t.text_strong } else { t.icon });
         resp.widget_info(|| egui::WidgetInfo::selected(egui::WidgetType::Button, ui.is_enabled(), active == tool.id, tip(tool)));
-        if resp.on_hover_text(tip(tool)).clicked() {
+        if resp.on_hover_text(hover_tip(tool)).clicked() {
             chosen = Some(tool.id);
         }
     }
@@ -1704,7 +1739,8 @@ pub(crate) mod tests {
         frame(&mut app, &ctx, 1.0, vec![]);
         let strip = ctx.memory(|m| m.area_rect(floating_area("rectangle"))).unwrap();
         let star = pos2(strip.left() + STRIP_BUTTON.x * 2.5, strip.center().y);
-        let tip = tl!("Star Tool").to_string();
+        // The visible tooltip includes the beginner explanation, not just its title.
+        let tip = format!("{}\n\n{}", tl!("Star Tool"), tl!("Drag to draw a star."));
         assert!(hovered_texts(&mut app, &ctx, 10.0, star).contains(&tip), "on by default");
         app.session.prefs.show_tool_tips = false;
         assert!(!hovered_texts(&mut app, &ctx, 20.0, star).contains(&tip), "off: no tool tip");
